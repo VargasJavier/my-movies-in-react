@@ -1,11 +1,68 @@
+:root {
+  --primary-color: #070d2d;
+  --secondary-color: #161a37;
+  --terciary-color: #546ee5;
+  --text-color: #f8f8f8;
+  --star-color: #ffa235;
+  --star-incomplete: #3e4265;
+  --seats-color: #454b6b;
+  --available-color: #fe5430;
+}
+
+html,
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
 .App {
   text-align: center;
 }
 
-.containerPages {
+.containerFlex {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
+}
+
+.containerPages {
+  justify-content: space-around;
+}
+
+.search {
+  justify-content: start;
+  border: solid 0.05rem var(--seats-color);
+  border-radius: 2rem;
+  margin: 0.75rem 1.75rem;
+  background-color: var(--primary-color);
+}
+
+::placeholder {
+  color: var(--seats-color);
+}
+
+.search__icon {
+  margin: 0 1rem;
+  fill: var(--seats-color);
+}
+
+.search__input {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 0;
+  color: var(--text-color);
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+h1,
+h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0 0.75rem;
 }
 
 button {
@@ -19,4 +76,79 @@ button:disabled {
   background-color: aliceblue;
   color: black;
   cursor: no-drop;
+}
+
+.complete {
+  fill: var(--star-color);
+}
+
+.incomplete {
+  fill: var(--star-incomplete);
+}
+
+.card {
+  width: 50%;
+  min-width: 50%;
+  padding: 0.75rem;
+}
+
+.slider {
+  overflow-x: auto;
+}
+
+.card__image {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 1.75rem;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* NAV */
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  z-index: 5;
+  padding: 1rem 0 0.5rem 0;
+  background-color: var(--primary-color);
+  border-radius: 2rem 2rem 0 0;
+  box-shadow: -0.125rem -0.125rem 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+.nav__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: var(--seats-color);
+}
+
+.active__icon {
+  fill: var(--terciary-color);
+  stroke: none;
+}
+
+.nav__circle {
+  margin: 0.45rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.active {
+  background-color: var(--terciary-color);
 }

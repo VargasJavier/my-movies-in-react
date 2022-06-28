@@ -1,6 +1,6 @@
 const ContainerPages = ({ changePage, disable, page }) => {
   return (
-    <div className='containerPages'>
+    <div className='containerFlex containerPages'>
       <button onClick={(e) => changePage(e, -1)} disabled={disable.previous}>
         Prev
       </button>
