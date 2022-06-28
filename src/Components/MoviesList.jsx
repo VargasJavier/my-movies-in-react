@@ -1,11 +1,11 @@
 import Movie from "./Movie";
 
-const MoviesList = ({ movies, initial, final }) => {
+const MoviesList = ({ movies, initial, final, title = "Popular" }) => {
   return (
     <>
-      <section className='containerFlex'>
-        <h2>Popular</h2>
-        <span>See more</span>
+      <section className='containerFlex container__title'>
+        <h2>{title}</h2>
+        <span className='see'>See more</span>
       </section>
       <section className='containerFlex slider'>
         {movies ? (
@@ -16,6 +16,7 @@ const MoviesList = ({ movies, initial, final }) => {
           <p>No se encontraron resultados</p>
         )}
       </section>
+      <div className='content'></div>
     </>
   );
 };

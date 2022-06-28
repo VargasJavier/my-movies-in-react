@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import MoviesList from "./MoviesList";
-import ContainerPages from "./ContainerPages";
 import Header from "./Header";
-import Search from "./Search";
 import NavBottom from "./NavBottom";
+import TopMoviesList from "./TopMoviesList";
 
 const MoviesListContainer = () => {
   const [movies, setMovies] = useState([]);
+  const [moviesRandom, setMoviesRandom] = useState([]);
   const [initial, setInitial] = useState(0);
   const [final, setFinal] = useState(5);
-  const [page, setPage] = useState(1);
-  const [disable, setDisable] = useState({ next: false, previous: true });
   const URL =
     "https://api.themoviedb.org/3/trending/all/day?api_key=a9623aebd3d503d051631e3bf4c4ef8f";
+  const URL_RECOMENDATIONS =
+    "https://api.themoviedb.org/3/movie/2/recommendations?api_key=a9623aebd3d503d051631e3bf4c4ef8f&language=en-US&page=1";
 
   const getMovies = async () => {
     const data = await fetch(URL);
@@ -20,29 +20,35 @@ const MoviesListContainer = () => {
     setMovies(moviesData.results);
   };
 
-  function changePage(evt, number) {
-    setPage(page + number);
-    isDisable(number);
-    setInitial(initial + number * 5);
-    setFinal(final + number * 5);
+  const getMoviesRecomendations = async () => {
+    const data = await fetch(URL_RECOMENDATIONS);
+    const moviesData = await data.json();
+    const moviesDataFilter = moviesData.results;
+    const dataFinal = moviesDataFilter.filter((movie) => {
+      return movie.backdrop_path !== null;
+    });
+    console.log(dataFinal);
+    getMovieRandom(moviesDataFilter);
+  };
+
+  function sortArray(array) {
+    return array.sort(() => Math.random() - 0.5);
   }
 
-  function isDisable(number) {
-    if (page + number < 2) setDisable({ ...disable, previous: true });
-    else if (page + number > 3) setDisable({ ...disable, next: true });
-    else setDisable({ next: false, previous: false });
-  }
+  const getMovieRandom = (movieDataRandom) => {
+    setMoviesRandom(sortArray(movieDataRandom).slice(0, 5));
+    console.log("CONTAINER: ", moviesRandom);
+  };
 
   useEffect(() => {
     getMovies();
+    getMoviesRecomendations();
   }, []);
 
   return (
     <div className='App'>
       <Header />
-      <Search />
-      <MoviesList movies={movies} initial={initial} final={final} />
-      <MoviesList movies={movies} initial={initial} final={final} />
+      <TopMoviesList movies={moviesRandom} />
       <MoviesList movies={movies} initial={initial} final={final} />
       <NavBottom />
     </div>

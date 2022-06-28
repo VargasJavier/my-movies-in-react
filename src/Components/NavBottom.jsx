@@ -2,7 +2,7 @@ import { AiFillHome as HomeIcon } from "react-icons/ai";
 import { FaRegCompass as CompassIcon } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser as UserIcon } from "react-icons/fa";
 
 const NavBottom = () => {
   return (
@@ -20,7 +20,7 @@ const NavBottom = () => {
         <div className='nav__circle'></div>
       </article>
       <article className='nav__container'>
-        <FaRegUser className='nav__icon' />
+        <UserIcon className='nav__icon' />
         <div className='nav__circle'></div>
       </article>
     </nav>

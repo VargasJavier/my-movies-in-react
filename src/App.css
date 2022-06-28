@@ -7,6 +7,7 @@
   --star-incomplete: #3e4265;
   --seats-color: #454b6b;
   --available-color: #fe5430;
+  --secondary-rgb: rgba(22, 26, 55, 0.5);
 }
 
 html,
@@ -26,8 +27,25 @@ body {
   padding: 0.5rem;
 }
 
+.header {
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.container__title {
+  padding: 0 1.15rem;
+}
+
 .containerPages {
   justify-content: space-around;
+}
+
+.container__profile {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  border-radius: 50%;
 }
 
 .search {
@@ -65,6 +83,15 @@ h2 {
   padding: 0 0.75rem;
 }
 
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h3 {
+  /* color: var(--secondary-rgb); */
+}
+
 button {
   padding: 0.75rem 1rem;
   background-color: aqua;
@@ -80,9 +107,11 @@ button:disabled {
 
 .complete {
   fill: var(--star-color);
+  padding: 0 0.1rem;
 }
 
 .incomplete {
+  padding: 0 0.1rem;
   fill: var(--star-incomplete);
 }
 
@@ -94,6 +123,80 @@ button:disabled {
 
 .slider {
   overflow-x: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.slider {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.see {
+  font-size: 0.85rem;
+  color: var(--seats-color);
+}
+
+.container__carousel {
+  overflow-x: hidden;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-horizontal {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  border-radius: 1rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-horizontal::-webkit-scrollbar {
+  display: none;
+}
+
+.content__image {
+  height: 10rem;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: var(--secondary-color);
+}
+
+.carousel-item {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.image__top {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.title__movie {
+  position: relative;
+  bottom: 6rem;
+  padding: 0.65rem;
+  background-color: var(--secondary-rgb);
 }
 
 .card__image {
@@ -151,4 +254,19 @@ button:disabled {
 
 .active {
   background-color: var(--terciary-color);
+}
+
+.content {
+  height: 4.125rem;
+}
+
+.available {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.55rem;
+  top: -0.05rem;
+  right: -0.05rem;
+  margin: 0.1rem;
+  border: solid 0.2rem var(--primary-color);
+  background-color: var(--available-color);
 }
