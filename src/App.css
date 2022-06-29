@@ -32,19 +32,29 @@ body {
 }
 
 .container__title {
-  padding: 0 1.15rem;
+  padding: 0.75rem 1.15rem 0.25rem;
 }
 
 .containerPages {
   justify-content: space-around;
 }
 
-.container__profile {
-  width: 1rem;
-  height: 1rem;
+.nav__relative {
   position: relative;
-  background-color: var(--secondary-color);
-  padding: 1rem;
+}
+
+.container__profile {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.icon__profile {
+  width: 100%;
+  height: 100%;
+  margin: 0;
   border-radius: 50%;
 }
 
@@ -88,10 +98,6 @@ h2 {
   font-weight: 600;
 }
 
-h3 {
-  /* color: var(--secondary-rgb); */
-}
-
 button {
   padding: 0.75rem 1rem;
   background-color: aqua;
@@ -121,6 +127,10 @@ button:disabled {
   padding: 0.75rem;
 }
 
+.card__explore {
+  width: 80%;
+}
+
 .slider {
   overflow-x: auto;
 }
@@ -137,6 +147,9 @@ button:disabled {
 }
 
 .see {
+  background-color: var(--primary-color);
+  padding: 0.5rem 0 0.25rem 0;
+  padding-inline-end: 0;
   font-size: 0.85rem;
   color: var(--seats-color);
 }
@@ -221,7 +234,7 @@ button:disabled {
   right: 0;
   justify-content: space-around;
   z-index: 5;
-  padding: 1rem 0 0.5rem 0;
+  /* padding: 1rem 0 0.5rem 0; */
   background-color: var(--primary-color);
   border-radius: 2rem 2rem 0 0;
   box-shadow: -0.125rem -0.125rem 0.5rem rgba(0, 0, 0, 0.25);
@@ -231,6 +244,9 @@ button:disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  margin: 0;
 }
 
 .nav__icon {
@@ -240,12 +256,14 @@ button:disabled {
 }
 
 .active__icon {
+  width: 1.4rem;
+  height: 1.4rem;
   fill: var(--terciary-color);
   stroke: none;
 }
 
 .nav__circle {
-  margin: 0.45rem;
+  margin: 0.3rem;
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
@@ -257,16 +275,46 @@ button:disabled {
 }
 
 .content {
-  height: 4.125rem;
+  height: 3.5rem;
 }
 
 .available {
   position: absolute;
   width: 0.55rem;
   height: 0.55rem;
-  top: -0.05rem;
-  right: -0.05rem;
-  margin: 0.1rem;
+  top: -0.2rem;
+  right: -0.2rem;
+  margin: 0 0 0.15rem 0.15rem;
   border: solid 0.2rem var(--primary-color);
   background-color: var(--available-color);
+}
+
+.hide {
+  display: none;
+}
+
+.container__explore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  justify-items: center;
+}
+
+.profile__container {
+  text-align: start;
+  padding: 1.5rem 1rem;
+}
+
+.profile {
+  justify-content: start;
+}
+
+.profile__content {
+  height: 6rem;
+  width: 6rem;
+}
+
+.profile__image {
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
 }

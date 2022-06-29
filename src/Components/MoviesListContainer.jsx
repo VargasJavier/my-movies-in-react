@@ -1,56 +1,37 @@
 import { useEffect, useState } from "react";
-import MoviesList from "./MoviesList";
-import Header from "./Header";
+import { useMachine } from "@xstate/react";
 import NavBottom from "./NavBottom";
-import TopMoviesList from "./TopMoviesList";
+import { getMovies, getMoviesRecomendations } from "../Helpers/getMovies";
+import movieMachine from "../Machines/movieMachine";
+import Home from "./Containers/Home";
+import Explore from "./Containers/Explore";
+import Seats from "./Containers/Seats";
+import Profile from "./Containers/Profile";
 
 const MoviesListContainer = () => {
+  const [state, send] = useMachine(movieMachine);
   const [movies, setMovies] = useState([]);
   const [moviesRandom, setMoviesRandom] = useState([]);
-  const [initial, setInitial] = useState(0);
-  const [final, setFinal] = useState(5);
-  const URL =
-    "https://api.themoviedb.org/3/trending/all/day?api_key=a9623aebd3d503d051631e3bf4c4ef8f";
-  const URL_RECOMENDATIONS =
-    "https://api.themoviedb.org/3/movie/2/recommendations?api_key=a9623aebd3d503d051631e3bf4c4ef8f&language=en-US&page=1";
 
-  const getMovies = async () => {
-    const data = await fetch(URL);
-    const moviesData = await data.json();
-    setMovies(moviesData.results);
-  };
-
-  const getMoviesRecomendations = async () => {
-    const data = await fetch(URL_RECOMENDATIONS);
-    const moviesData = await data.json();
-    const moviesDataFilter = moviesData.results;
-    const dataFinal = moviesDataFilter.filter((movie) => {
-      return movie.backdrop_path !== null;
-    });
-    console.log(dataFinal);
-    getMovieRandom(moviesDataFilter);
-  };
-
-  function sortArray(array) {
-    return array.sort(() => Math.random() - 0.5);
-  }
-
-  const getMovieRandom = (movieDataRandom) => {
-    setMoviesRandom(sortArray(movieDataRandom).slice(0, 5));
-    console.log("CONTAINER: ", moviesRandom);
+  const renderContent = () => {
+    if (state.matches("idle"))
+      return <Home moviesRandom={moviesRandom} movies={movies} send={send} />;
+    if (state.matches("explore"))
+      return <Explore movies={movies.concat(moviesRandom)} send={send} />;
+    if (state.matches("seats")) return <Seats />;
+    if (state.matches("profile")) return <Profile />;
+    return null;
   };
 
   useEffect(() => {
-    getMovies();
-    getMoviesRecomendations();
+    getMovies(setMovies);
+    getMoviesRecomendations(setMoviesRandom);
   }, []);
 
   return (
     <div className='App'>
-      <Header />
-      <TopMoviesList movies={moviesRandom} />
-      <MoviesList movies={movies} initial={initial} final={final} />
-      <NavBottom />
+      {renderContent()}
+      <NavBottom send={send} state={state} />
     </div>
   );
 };

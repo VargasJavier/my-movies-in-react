@@ -1,16 +1,27 @@
 import Movie from "./Movie";
 
-const MoviesList = ({ movies, initial, final, title = "Popular" }) => {
+const MoviesList = ({ movies, posicion, send }) => {
   return (
     <>
       <section className='containerFlex container__title'>
-        <h2>{title}</h2>
-        <span className='see'>See more</span>
+        <h2>Popular</h2>
+        <button
+          className='see'
+          onClick={() => {
+            send("EXPLORING");
+          }}
+        >
+          See more
+        </button>
       </section>
       <section className='containerFlex slider'>
         {movies ? (
-          movies.slice(initial, final).map((m) => {
-            return <Movie key={m.id} movie={m} />;
+          movies.slice(0, 5).map((m) => {
+            return (
+              <article key={m.id} className='card'>
+                <Movie movie={m} />
+              </article>
+            );
           })
         ) : (
           <p>No se encontraron resultados</p>

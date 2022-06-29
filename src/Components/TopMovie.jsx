@@ -1,4 +1,4 @@
-const URL_IMAGE = "https://image.tmdb.org/t/p/w500";
+import { URL_IMAGE } from "../Helpers/getMovies";
 
 const TopMovie = ({ movie }) => {
   return (
