@@ -318,3 +318,62 @@ button:disabled {
   width: 100%;
   border-radius: 2rem;
 }
+
+/* SEATS */
+
+.screen {
+  height: 0.2rem;
+  margin: 0 3rem 1rem 3rem;
+  background-color: var(--seats-color);
+}
+
+.screen__sub {
+  height: 0.25rem;
+  margin: 2rem 10rem 0.25rem 10rem;
+}
+
+.container__seats {
+  width: auto;
+}
+
+.content__seats {
+  display: inline-block;
+}
+
+.container__seat {
+  justify-content: center;
+  padding: 0.15rem;
+}
+
+.seat {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--primary-color);
+  border: solid 0.125rem var(--terciary-color);
+  border-radius: 0.3rem;
+  margin: 0.1rem 0.15rem;
+  padding: 0.6rem;
+}
+
+.selected {
+  background-color: var(--seats-color);
+  border: solid 0.125rem var(--seats-color);
+}
+
+.reserved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--seats-color);
+  font-weight: bold;
+  background-color: var(--primary-color);
+  border: solid 0.125rem var(--seats-color);
+}
+
+.hallway {
+  width: 0.7rem;
+  background-color: var(--primary-color);
+  border: solid 0.125rem var(--primary-color);
+  margin: 0.05rem;
+  padding: 0;
+}
