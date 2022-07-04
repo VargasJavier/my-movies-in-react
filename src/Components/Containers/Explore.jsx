@@ -1,14 +1,12 @@
 import ExploreList from "../ExploreList";
+import ExploreListContainer from "../ExploreListContainer";
 import Header from "../Header";
-import Search from "../Search";
 
 const Explore = ({ movies, send }) => {
   return (
     <>
-      <Header send={send}>
-        <Search />
-      </Header>
-      <ExploreList movies={movies} />
+      <Header send={send} />
+      <ExploreListContainer movies={movies} />
     </>
   );
 };

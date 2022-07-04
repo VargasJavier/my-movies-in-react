@@ -321,9 +321,14 @@ button:disabled {
 
 /* SEATS */
 
+.title__seats {
+  font-size: 1.15rem;
+  padding: 1rem 0 0 0;
+}
+
 .screen {
   height: 0.2rem;
-  margin: 0 3rem 1rem 3rem;
+  margin: 0 3rem 2rem 3rem;
   background-color: var(--seats-color);
 }
 
@@ -352,12 +357,11 @@ button:disabled {
   border: solid 0.125rem var(--terciary-color);
   border-radius: 0.3rem;
   margin: 0.1rem 0.15rem;
-  padding: 0.6rem;
+  padding: 0.7rem;
 }
 
 .selected {
-  background-color: var(--seats-color);
-  border: solid 0.125rem var(--seats-color);
+  border: solid 0.125rem var(--terciary-color);
 }
 
 .reserved {
@@ -376,4 +380,18 @@ button:disabled {
   border: solid 0.125rem var(--primary-color);
   margin: 0.05rem;
   padding: 0;
+}
+
+.container__seats--info {
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.seats__flex {
+  display: flex;
+  align-items: center;
+}
+
+.seats__name {
+  margin-left: 0.25rem;
 }

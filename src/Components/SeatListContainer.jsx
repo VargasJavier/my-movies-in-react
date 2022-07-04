@@ -8,14 +8,12 @@ const SeatListContainer = () => {
   const [rooms, setRooms] = useState(results);
 
   return (
-    // <section className='container__seats'>
     <section className='content__seats'>
       {rooms.map((r) => {
         const room = getRoom(r);
-        return <SeatList key={r.id} room={room} />;
+        return <SeatList key={r.row} room={room} />;
       })}
     </section>
-    // </section>
   );
 };
 export default SeatListContainer;

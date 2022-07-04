@@ -1,6 +1,6 @@
 import { FaSistrix as IconSearch } from "react-icons/fa";
 
-const Search = () => {
+const Search = ({ setSearch }) => {
   return (
     <section>
       <div className='containerFlex search'>
@@ -9,6 +9,9 @@ const Search = () => {
           className='search__input'
           type='text'
           placeholder='Search your movie'
+          onChange={(e) => {
+            setSearch(e.target.value.toLowerCase());
+          }}
         />
       </div>
     </section>

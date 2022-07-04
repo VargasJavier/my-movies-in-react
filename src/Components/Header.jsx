@@ -19,7 +19,6 @@ const Header = ({ send, children = null }) => {
           </button>
         </section>
       </header>
-      {children}
     </>
   );
 };

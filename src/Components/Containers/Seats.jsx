@@ -4,7 +4,7 @@ import SeatListContainer from "../SeatListContainer";
 const Seats = () => {
   return (
     <>
-      <div>Select Seats</div>
+      <h2 className='title__seats'>Select Seats</h2>
       <Cinema />
     </>
   );
