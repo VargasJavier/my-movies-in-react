@@ -14,7 +14,11 @@ export const SELECTED = 3;
 export const getMovies = async (setMovies) => {
   const data = await fetch(URL);
   const moviesData = await data.json();
-  setMovies(moviesData.results);
+  const movies = moviesData.results.map((m) => {
+    let rating = getRating(m.vote_average);
+    return { ...m, rating };
+  });
+  setMovies(movies);
 };
 
 export const getMoviesRecomendations = async (setMoviesRandom) => {
@@ -24,12 +28,43 @@ export const getMoviesRecomendations = async (setMoviesRandom) => {
   const dataFinal = moviesDataFilter.filter((movie) => {
     return movie.backdrop_path !== null;
   });
-  setMoviesRandom(sortArray(dataFinal));
+  const movies = dataFinal.map((m) => {
+    let rating = getRating(m.vote_average);
+    return { ...m, rating };
+  });
+  setMoviesRandom(sortArray(movies));
 };
 
 function sortArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
+
+export const getValueSearch = (movies, search, setMovies) => {
+  const moviesFilters = search
+    ? movies.filter((m) => {
+        const name = m.name ? m.name : m.title;
+        return name.toLowerCase().includes(search);
+      })
+    : movies;
+  setMovies(moviesFilters);
+};
+
+export const getRating = (rating) => {
+  let number = Math.round(rating) / 2;
+  let ratingArray = [];
+  for (let i = 0; i < 5; i++) {
+    if (number == 0) {
+      ratingArray.push(0);
+      continue;
+    } else if (number < 1) {
+      ratingArray.push(1);
+      number = 0;
+      continue;
+    } else ratingArray.push(2);
+    number--;
+  }
+  return ratingArray;
+};
 
 // CONVERT ROOM OBJECT A ROOM ARRAY
 

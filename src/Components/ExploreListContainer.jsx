@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getValueSearch } from "../Helpers/getMovies";
 import Movie from "./Movie";
 import Search from "./Search";
 
@@ -6,18 +7,8 @@ const ExploreListContainer = ({ movies }) => {
   const [search, setSearch] = useState("");
   const [moviesFilter, setMovies] = useState(movies);
 
-  const getValueSearch = (movies, search) => {
-    const moviesFilters = search
-      ? movies.filter((m) => {
-          const name = m.name ? m.name : m.title;
-          return name.toLowerCase().includes(search);
-        })
-      : movies;
-    setMovies(moviesFilters);
-  };
-
   useEffect(() => {
-    getValueSearch(movies, search);
+    getValueSearch(movies, search, setMovies);
   }, [search]);
 
   return (

@@ -1,6 +1,5 @@
-import { FaStar as StarComplete } from "react-icons/fa";
-import { FaStarHalfAlt as StarHalf } from "react-icons/fa";
 import { URL_IMAGE } from "../Helpers/getMovies";
+import StarList from "./StarList";
 
 const Movie = ({ movie }) => {
   return (
@@ -9,11 +8,7 @@ const Movie = ({ movie }) => {
       <p className='ellipsis'>
         {movie.name ? `${movie.name}` : `${movie.title}`}
       </p>
-      <StarComplete className='complete'></StarComplete>
-      <StarComplete className='complete'></StarComplete>
-      <StarComplete className='complete'></StarComplete>
-      <StarHalf className='complete'></StarHalf>
-      <StarComplete className='incomplete'></StarComplete>
+      <StarList ratings={movie.rating} />
     </>
   );
 };
