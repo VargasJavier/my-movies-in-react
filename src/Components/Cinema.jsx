@@ -1,5 +1,5 @@
-import Seat from "./Seat";
 import SeatListContainer from "./SeatListContainer";
+import SeatSelect from "./SeatSelect";
 
 const Cinema = () => {
   return (
@@ -9,15 +9,15 @@ const Cinema = () => {
       <SeatListContainer />
       <section className='containerFlex container__seats--info'>
         <article className='seats__flex'>
-          <Seat />
+          <SeatSelect />
           <span className='seats__name'>Reserved</span>
         </article>
         <article className='seats__flex'>
-          <Seat status='3' />
+          <SeatSelect status='3' />
           <span className='seats__name'>Selected</span>
         </article>
         <article className='seats__flex'>
-          <Seat status='1' />
+          <SeatSelect status='1' />
           <span className='seats__name'>Available</span>
         </article>
       </section>

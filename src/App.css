@@ -1,13 +1,15 @@
 :root {
-  --primary-color: #070d2d;
-  --secondary-color: #161a37;
-  --terciary-color: #546ee5;
-  --text-color: #f8f8f8;
-  --star-color: #ffa235;
-  --star-incomplete: #3e4265;
-  --seats-color: #454b6b;
-  --available-color: #fe5430;
+  --primary-color: rgb(7, 13, 45);
+  --primary-color-trans: rgba(7, 13, 45, 0.1);
+  --secondary-color: rgb(22, 26, 55);
+  --terciary-color: rgb(84, 110, 229);
+  --text-color: rgb(248, 248, 248);
+  --star-color: rgb(255, 162, 53);
+  --star-incomplete: rgb(62, 66, 101);
+  --seats-color: rgb(69, 75, 107);
+  --available-color: rgb(254, 84, 48);
   --secondary-rgb: rgba(22, 26, 55, 0.5);
+  --ocuped-color: rgb(66, 66, 66);
 }
 
 html,
@@ -394,4 +396,76 @@ button:disabled {
 
 .seats__name {
   margin-left: 0.25rem;
+}
+
+/* NEW SEATS */
+
+.container__select {
+  margin: 0.1rem 0.25rem;
+}
+
+.content__select {
+  cursor: pointer;
+}
+
+.select {
+  display: none;
+}
+
+.select:checked ~ .select__span {
+  background: var(--terciary-color);
+  color: var(--terciary-color);
+  box-shadow: 1px 1px 4px var(--terciary-color);
+}
+
+.select__span {
+  position: relative;
+  display: inline-block;
+  background: var(--primary-color);
+  border: solid 0.125rem var(--terciary-color);
+  padding: 0.2rem 0.4rem;
+  color: var(--primary-color);
+  text-shadow: 0 1px 4 rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  transition: 0.5s;
+  user-select: none;
+  overflow: hidden;
+}
+
+.select__span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--primary-color-trans);
+}
+
+.hallway {
+  width: 0.1rem;
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+  border: solid 0.125rem var(--primary-color);
+  margin: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.hallway::before {
+  background: var(--primary-color);
+}
+
+/* .reserved {
+  background-color: var(--ocuped-color);
+  border: solid 0.1rem var(--seats-color);
+  color: var(--secondary-color);
+  cursor: no-drop;
+} */
+
+.reserved {
+  background-color: var(--primary-color);
+  border: solid 0.125rem var(--seats-color);
+  color: var(--ocuped-color);
+  cursor: no-drop;
 }
